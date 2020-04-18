@@ -3,7 +3,7 @@
   "private": true,
   "description": "Federico Alecci's blog powered by Gatsby and Markdown",
   "version": "0.1.0",
-  "author": "Federico Alecci <federico.alecci@hotmail.com>",
+  "author": "Federico Alecci <i.am@falecci.dev>",
   "bugs": {
     "url": "https://github.com/falecci/blog/issues"
   },
@@ -42,7 +42,7 @@
     "eslint-plugin-react": "^7.19.0",
     "prettier": "2.0.4"
   },
-  "homepage": "https://github.com/falecci/blog#readme",
+  "homepage": "https://falecci.dev",
   "keywords": [
     "gatsby"
   ],
