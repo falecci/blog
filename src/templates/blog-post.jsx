@@ -38,16 +38,24 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               ...scale(-1 / 5),
               color: colors.gray,
               display: `block`,
-              marginBottom: rhythm(1),
+              marginBottom: 0,
             }}
           >
             {frontmatter.date} 📖 {timeToRead} min read
           </p>
-          <LocaleSwitcher
-            currentLocale={langKey}
-            locales={translations}
-            slug={getAbsoluteSlug(slug)}
-          />
+          <p
+            style={{
+              ...scale(-1 / 5),
+              color: colors.gray,
+            }}
+          >
+            Also in{' '}
+            <LocaleSwitcher
+              currentLocale={langKey}
+              locales={translations}
+              slug={getAbsoluteSlug(slug)}
+            />
+          </p>
         </header>
         <p
           dangerouslySetInnerHTML={{ __html: html }}

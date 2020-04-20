@@ -24,6 +24,7 @@ const Header = ({ location, title }) => {
   if (location.pathname === rootPath) {
     return (
       <h1
+        className="blog-title"
         style={{
           ...scale(0.75),
           marginBottom: 0,

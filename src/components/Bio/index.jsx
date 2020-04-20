@@ -60,8 +60,7 @@ const Bio = () => {
         >
           Fede
         </a>{' '}
-        and I write about <br />
-        coding and some other stuff too.
+        and I write about coding and some other stuff.
       </p>
     </div>
   );

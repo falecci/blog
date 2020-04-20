@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { supportedLanguages } from '../../../i18n';
@@ -12,26 +12,22 @@ const LocaleSwitcher = ({ currentLocale, locales, slug }) => {
   const links = locales
     .filter((lang) => lang !== currentLocale)
     .map((lang, index, mLocales) => (
-      <>
-        <Link
-          style={{ color: colors.orange }}
-          key={lang}
-          to={`/${lang}/${slug}`}
-        >
+      <Fragment key={lang}>
+        <Link style={{ color: colors.orange }} to={`/${lang}/${slug}`}>
           {supportedLanguages[lang]}
         </Link>
         {index < mLocales.length - 1 && ' | '}
-      </>
+      </Fragment>
     ));
 
   if (currentLocale !== 'en') {
     links.unshift(
-      <>
+      <Fragment key="en">
         <Link style={{ color: colors.orange }} to={`/${slug}`}>
           {supportedLanguages.en}
         </Link>{' '}
         {links.length >= 1 && ' | '}
-      </>
+      </Fragment>
     );
   }
 

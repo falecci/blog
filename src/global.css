@@ -1,6 +1,6 @@
 html,
 body,
-h1,
+h1:not(.blog-title),
 h3 {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
