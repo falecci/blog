@@ -9,6 +9,7 @@ const SEO = ({ description, lang, meta, title, thumbnail }) => {
       query {
         site {
           siteMetadata {
+            siteUrl
             title
             description
             social {
@@ -22,7 +23,7 @@ const SEO = ({ description, lang, meta, title, thumbnail }) => {
 
   const metaDescription = description || site.siteMetadata.description;
   const imageSrc = thumbnail && thumbnail.childImageSharp.sizes.src;
-  let origin = '';
+  let origin = site.siteMetadata.siteUrl;
   if (typeof window !== 'undefined') {
     origin = window.location.origin;
   }
