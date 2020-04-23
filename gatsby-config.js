@@ -30,9 +30,6 @@ module.exports = {
         plugins: [
           {
             resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 590,
-            },
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,
@@ -58,8 +55,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `fal3cc1's bl0g`,
+        short_name: `fal3cc1's bl0g`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,

@@ -38,24 +38,26 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               ...scale(-1 / 5),
               color: colors.gray,
               display: `block`,
-              marginBottom: 0,
+              marginBottom: !!translations.length ? 0 : '1.75rem',
             }}
           >
             {frontmatter.date} 📖 {timeToRead} min read
           </p>
-          <p
-            style={{
-              ...scale(-1 / 5),
-              color: colors.gray,
-            }}
-          >
-            Also in{' '}
-            <LocaleSwitcher
-              currentLocale={langKey}
-              locales={translations}
-              slug={getAbsoluteSlug(slug)}
-            />
-          </p>
+          {!!translations.length && (
+            <p
+              style={{
+                ...scale(-1 / 5),
+                color: colors.gray,
+              }}
+            >
+              Also in{' '}
+              <LocaleSwitcher
+                currentLocale={langKey}
+                locales={translations}
+                slug={getAbsoluteSlug(slug)}
+              />
+            </p>
+          )}
         </header>
         <p
           dangerouslySetInnerHTML={{ __html: html }}

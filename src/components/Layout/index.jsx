@@ -37,7 +37,7 @@ const Header = ({ location, title }) => {
   }
 
   return (
-    <h3
+    <h2
       style={{
         fontFamily: 'Montserrat, sans-serif',
         marginTop: 0,
@@ -47,7 +47,7 @@ const Header = ({ location, title }) => {
       }}
     >
       {titleLink}
-    </h3>
+    </h2>
   );
 };
 
