@@ -7,6 +7,7 @@ module.exports = {
     social: {
       twitter: `federicoalecci`,
       github: `falecci`,
+      email: 'i.am@falecci.dev',
     },
   },
   plugins: [

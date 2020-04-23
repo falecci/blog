@@ -11,6 +11,12 @@ const BlogIndex = ({ data, location }) => {
   const { title, social } = data.site.siteMetadata;
   const posts = data.allMarkdownRemark.edges;
 
+  const socialURLs = {
+    Twitter: `https://mobile.twitter.com/${social.twitter}`,
+    Github: `https://github.com/${social.github}`,
+    Email: `mailto:${social.email}`,
+  };
+
   return (
     <Layout location={location} title={title}>
       <SEO title="All posts" />
@@ -56,20 +62,16 @@ const BlogIndex = ({ data, location }) => {
         );
       })}
       <footer>
-        <a
-          style={{ color: colors.orange }}
-          href={`https://mobile.twitter.com/${social.twitter}`}
-        >
-          Twitter
-        </a>{' '}
-        #{' '}
-        <a
-          style={{ color: colors.orange }}
-          href={`https://github.com/${social.github}`}
-        >
-          Github
-        </a>{' '}
-        #
+        {Object.entries(socialURLs).map(([key, value], index, total) => (
+          <React.Fragment>
+            <a key={key} style={{ color: colors.orange }} href={value}>
+              {key}
+            </a>
+            {index !== total.length - 1 && (
+              <span style={{ color: colors.gray }}> # </span>
+            )}
+          </React.Fragment>
+        ))}
       </footer>
     </Layout>
   );
@@ -86,6 +88,7 @@ export const pageQuery = graphql`
         social {
           twitter
           github
+          email
         }
       }
     }
