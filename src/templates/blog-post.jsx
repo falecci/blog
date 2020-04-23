@@ -21,6 +21,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       <SEO
         title={frontmatter.title}
         description={frontmatter.description || excerpt}
+        thumbnail={frontmatter.thumbnail}
       />
       <article>
         <header>
@@ -131,6 +132,13 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        thumbnail {
+          childImageSharp {
+            sizes(maxWidth: 600) {
+              ...GatsbyImageSharpSizes
+            }
+          }
+        }
       }
       fields {
         slug

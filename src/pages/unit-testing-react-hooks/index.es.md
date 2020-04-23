@@ -2,6 +2,7 @@
 title: Unit Testing React Hooks Propios
 date: "2019-05-23"
 description: Como escribir unit tests para react hooks propios sin interactuar con el dom para nada!
+thumbnail: ''
 ---
 
 Si quieres evitar toda la intro y explicacion, siéntete libre de ir hasta al final o simplemente visitar el repo. Sin embargo, si quisieras irte con un mejor entendimento, te recomiendo disfrutar la historia completa.

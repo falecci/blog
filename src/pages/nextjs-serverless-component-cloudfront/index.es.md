@@ -2,6 +2,7 @@
 title: Solución alterna a la recreación de distribuciones de CloudFront en NextJS Serverless Component
 date: "2020-04-23"
 description: How to work around NextJS Serverless Component creating a CloudFront Distribution on each deployment
+thumbnail: ./serverless-component.png
 ---
 
 ![](./serverless-component.png)
