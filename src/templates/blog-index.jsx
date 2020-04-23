@@ -49,7 +49,7 @@ const BlogIndex = ({ data, location }) => {
               </small>
             </header>
             <section>
-              <p
+              <div
                 style={{
                   color: colors.gray,
                 }}

@@ -60,7 +60,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             </p>
           )}
         </header>
-        <p
+        <div
           dangerouslySetInnerHTML={{ __html: html }}
           style={{
             color: colors.gray,
