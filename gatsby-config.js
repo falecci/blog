@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: `fal3cc1's bl0g`,
     author: 'Federico Alecci',
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `Federico Alecci's personal blog.`,
     siteUrl,
     social: {
       twitter: `federicoalecci`,
