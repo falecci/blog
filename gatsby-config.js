@@ -1,9 +1,11 @@
+const siteUrl = 'https://falecci.dev';
+
 module.exports = {
   siteMetadata: {
     title: `fal3cc1's bl0g`,
     author: 'Federico Alecci',
     description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://falecci.dev`,
+    siteUrl,
     social: {
       twitter: `federicoalecci`,
       github: `falecci`,
@@ -66,6 +68,15 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: siteUrl,
+        sitemap: `${siteUrl}/sitemap.xml`,
+        policy: [{ userAgent: '*', disallow: '' }],
+      },
+    },
     {
       resolve: `gatsby-plugin-typography`,
       options: {
