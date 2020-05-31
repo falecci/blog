@@ -2,7 +2,7 @@
 title: Unit Testing Custom React Hooks
 date: "2019-05-23"
 description: How to write unit tests for custom react hooks without interacting with the dom at all!
-thumbnail: ''
+tags: ['react', 'hooks', 'testing']
 ---
 
 If you want to skip it all the intro and explanation, feel free go to the bottom or just visit the repo. However, if you want to leave with a better understanding, enjoy reading the full story.

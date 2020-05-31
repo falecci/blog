@@ -2,7 +2,7 @@ const siteUrl = 'https://falecci.dev';
 
 module.exports = {
   siteMetadata: {
-    title: `fal3cc1's bl0g`,
+    title: `falecci.dev`,
     author: 'Federico Alecci',
     description: `Federico Alecci's personal blog.`,
     siteUrl,
@@ -10,6 +10,7 @@ module.exports = {
       twitter: `federicoalecci`,
       github: `falecci`,
       email: 'i.am@falecci.dev',
+      linkedIn: 'federico-alecci',
     },
   },
   plugins: [
@@ -47,11 +48,24 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaultQuality: 100,
+      },
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: `UA-163820190-1`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /assets/, // See below to configure properly
+        },
       },
     },
     `gatsby-plugin-feed`,

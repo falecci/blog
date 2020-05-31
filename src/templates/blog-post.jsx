@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 
-import Bio from '../components/Bio';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import { rhythm, scale } from '../utils/typography';
@@ -12,16 +11,17 @@ import { colors } from '../constants/styles';
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata.title;
-  const { previous, next, translations } = pageContext;
+  const { translations } = pageContext;
   const { frontmatter, timeToRead, fields, excerpt, html } = post;
+  const { title, description, thumbnail, date } = frontmatter;
   const { langKey, slug } = fields;
 
   return (
     <Layout location={location} title={siteTitle}>
       <SEO
-        title={frontmatter.title}
-        description={frontmatter.description || excerpt}
-        thumbnail={frontmatter.thumbnail}
+        title={title}
+        description={description || excerpt}
+        thumbnail={thumbnail}
       />
       <article>
         <header>
@@ -32,23 +32,23 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               marginBottom: 0,
             }}
           >
-            {frontmatter.title}
+            {title}
           </h1>
           <p
             style={{
               ...scale(-1 / 5),
-              color: colors.gray,
+              color: colors.dark,
               display: `block`,
               marginBottom: !!translations.length ? 0 : '1.75rem',
             }}
           >
-            {frontmatter.date} 📖 {timeToRead} min read
+            {date} 📖 {timeToRead} min read
           </p>
           {!!translations.length && (
             <p
               style={{
                 ...scale(-1 / 5),
-                color: colors.gray,
+                color: colors.dark,
               }}
             >
               Also in{' '}
@@ -63,7 +63,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         <div
           dangerouslySetInnerHTML={{ __html: html }}
           style={{
-            color: colors.gray,
+            color: colors.dark,
           }}
         />
         <hr
@@ -71,45 +71,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             marginBottom: rhythm(1),
           }}
         />
-        <footer>
-          <Bio />
-        </footer>
       </article>
-
-      <nav>
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link
-                to={previous.fields.slug}
-                style={{ color: colors.orange }}
-                rel="prev"
-              >
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link
-                to={next.fields.slug}
-                style={{ color: colors.orange }}
-                rel="next"
-              >
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav>
     </Layout>
   );
 };

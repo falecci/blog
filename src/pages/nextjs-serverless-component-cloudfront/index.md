@@ -1,8 +1,9 @@
 ---
-title: Working around CloudFront Distribution Recreation in NextJS Serverless Component
+title: NextJS Serverless Component and AWS CloudFront
 date: "2020-04-23"
 description: How to work around NextJS Serverless Component creating a CloudFront Distribution on each deployment
 thumbnail: ./serverless-component.png
+tags: ['serverless', 'nextjs']
 ---
 
 ![](./serverless-component.png)

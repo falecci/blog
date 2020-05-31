@@ -24,7 +24,7 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
           {
-            allMarkdownRemark(
+            postsRemark: allMarkdownRemark(
               sort: { fields: [frontmatter___date], order: DESC }
               limit: 1000
             ) {
@@ -37,8 +37,14 @@ exports.createPages = ({ graphql, actions }) => {
                   }
                   frontmatter {
                     title
+                    tags
                   }
                 }
+              }
+            }
+            tagsGroup: allMarkdownRemark(limit: 2000) {
+              group(field: frontmatter___tags) {
+                fieldValue
               }
             }
           }
@@ -51,7 +57,7 @@ exports.createPages = ({ graphql, actions }) => {
         }
 
         // Create blog posts pages.
-        const posts = result.data.allMarkdownRemark.edges;
+        const posts = result.data.postsRemark.edges;
 
         const translationsByDirectory = _.reduce(
           posts,
