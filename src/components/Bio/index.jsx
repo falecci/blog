@@ -8,29 +8,8 @@ import EmailIcon from '../../../content/assets/mail.svg';
 
 import { rhythm } from '../../utils/typography';
 import { colors } from '../../constants/styles';
-import useIsSmallDisplay from '../useIsSmallDisplay';
-
-const ICON_STYLES = { width: 32, height: 32, fill: colors.orange };
-const ANCHOR_STYLES = { boxShadow: `none`, textDecoration: 'none' };
-
-const VerticalDivider = () => (
-  <div
-    style={{
-      border: '1px solid linear-gradient(180deg,#e6e6e6 0,#e6e6e6 48%,#fff)',
-      marginLeft: '24px',
-      borderImage: `linear-gradient( to bottom, ${colors.orange}, rgba(0, 0, 0, 0) ) 1 100%`,
-      borderWidth: '1px',
-      borderStyle: 'solid',
-      flexDirection: 'column',
-      height: '26rem',
-      marginTop: '2.625rem',
-      marginRight: '1.3125rem',
-    }}
-  />
-);
 
 const Bio = () => {
-  const isSmallDisplay = useIsSmallDisplay();
   const data = useStaticQuery(graphql`
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
@@ -63,23 +42,9 @@ const Bio = () => {
     LinkedIn: `https://linkedin.com/in/${social.linkedIn}`,
   };
 
-  const sectionPadding = isSmallDisplay
-    ? `2.625rem ${rhythm(3 / 4)} 0 ${rhythm(3 / 4)}`
-    : `2.625rem 0 0 ${rhythm(3 / 4)}`;
-
   return (
     <>
-      <div
-        style={{
-          display: `flex`,
-          flexDirection: 'column',
-          marginLeft: isSmallDisplay ? 'auto' : '10%',
-          marginRight: isSmallDisplay ? 'auto' : '12px',
-          maxWidth: '42rem',
-          padding: sectionPadding,
-          width: isSmallDisplay ? '100%' : '20%',
-        }}
-      >
+      <div className="bio">
         <Image
           fixed={data.avatar.childImageSharp.fixed}
           alt={author}
@@ -104,35 +69,38 @@ const Bio = () => {
         >
           Hi there! My name is Fede and I write about coding and some other
           stuff too. I'm really into JavaScript stack, with React on the
-          frontend and Node with Serverless. On my free time, I love drinking
-          whisky, reading, playing some videogames, and petting my cat.
+          frontend and Node with Serverless. {`\n`}
+          On my free time, I love drinking whisky, reading, playing some
+          videogames, and petting my cat.
         </p>
 
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            width: !isSmallDisplay ? '80%' : '50%',
-          }}
-        >
-          <a title="Twitter" style={ANCHOR_STYLES} href={socialURLs.Twitter}>
-            <TwitterIcon style={ICON_STYLES} />
+        <div className="social-icons-container">
+          <a
+            title="Twitter"
+            className="social-anchor"
+            href={socialURLs.Twitter}
+          >
+            <TwitterIcon className="social-icon" />
           </a>
 
-          <a title="LinkedIn" style={ANCHOR_STYLES} href={socialURLs.LinkedIn}>
-            <LinkedInIcon style={ICON_STYLES} />
+          <a
+            title="LinkedIn"
+            className="social-anchor"
+            href={socialURLs.LinkedIn}
+          >
+            <LinkedInIcon className="social-icon" />
           </a>
 
-          <a title="Github" style={ANCHOR_STYLES} href={socialURLs.Github}>
-            <GithubIcon style={ICON_STYLES} />
+          <a title="Github" className="social-anchor" href={socialURLs.Github}>
+            <GithubIcon className="social-icon" />
           </a>
 
-          <a title="Email" style={ANCHOR_STYLES} href={socialURLs.Email}>
-            <EmailIcon style={ICON_STYLES} />
+          <a title="Email" className="social-anchor" href={socialURLs.Email}>
+            <EmailIcon className="social-icon" />
           </a>
         </div>
       </div>
-      {!isSmallDisplay && <VerticalDivider />}
+      <div className="vertical-divider" />
     </>
   );
 };

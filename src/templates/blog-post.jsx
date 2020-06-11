@@ -1,12 +1,13 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
-import SEO from '../components/SEO';
-import { rhythm, scale } from '../utils/typography';
 import LocaleSwitcher from '../components/LocaleSwitcher';
-import { getAbsoluteSlug } from '../utils/slug';
+import SEO from '../components/SEO';
+
 import { colors } from '../constants/styles';
+import { getAbsoluteSlug } from '../utils/slug';
+import { rhythm, scale } from '../utils/typography';
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark;
@@ -25,15 +26,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       />
       <article>
         <header>
-          <h1
-            style={{
-              color: colors.orange,
-              marginTop: rhythm(1),
-              marginBottom: 0,
-            }}
-          >
-            {title}
-          </h1>
+          <h1 className="post-title">{title}</h1>
           <p
             style={{
               ...scale(-1 / 5),
