@@ -3,7 +3,18 @@ import React from 'react';
 import Bio from '../Bio';
 import Header from './Header';
 
-const Layout = ({ location, title, children, isBioVisible }) => {
+type Props = {
+  title: string;
+  isBioVisible?: boolean;
+  location: Location;
+};
+
+const Layout: React.FC<Props> = ({
+  location,
+  title,
+  isBioVisible,
+  children,
+}) => {
   return (
     <div className="container">
       {isBioVisible && <Bio />}

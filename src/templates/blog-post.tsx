@@ -9,7 +9,42 @@ import { colors } from '../constants/styles';
 import { getAbsoluteSlug } from '../utils/slug';
 import { rhythm, scale } from '../utils/typography';
 
-const BlogPostTemplate = ({ data, pageContext, location }) => {
+type Props = {
+  location: Location;
+  pageContext: {
+    translations: string[];
+  };
+  data: {
+    site: {
+      siteMetadata: {
+        title: string;
+        author: string;
+      };
+    };
+    markdownRemark: {
+      id: string;
+      timeToRead: number;
+      html: string;
+      excerpt: string;
+      frontmatter: {
+        title: string;
+        date: string;
+        description: string;
+        thumbnail: {
+          childImageSharp: {
+            fixed: string;
+          };
+        };
+      };
+      fields: {
+        slug: string;
+        langKey: string;
+      };
+    };
+  };
+};
+
+const BlogPostTemplate = ({ data, pageContext, location }: Props) => {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata.title;
   const { translations } = pageContext;

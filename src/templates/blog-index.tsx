@@ -8,22 +8,60 @@ import Tags from '../components/Tags';
 
 const MINIMUM_SEARCH_LENGTH = 2;
 
-const filterByTag = (postTags, selectedTags) =>
+const filterByTag = (postTags: string[], selectedTags: string[]): boolean =>
   postTags.some((t) => selectedTags.includes(t)) || selectedTags.length === 0;
 
-const filterByTitle = (title, filter) =>
-  (filter.length >= MINIMUM_SEARCH_LENGTH &&
-    title.toLowerCase().includes(filter.toLowerCase())) ||
-  filter.length <= MINIMUM_SEARCH_LENGTH;
+const filterByTitle = (title: string, filterCriteria: string): boolean =>
+  (filterCriteria.length >= MINIMUM_SEARCH_LENGTH &&
+    title.toLowerCase().includes(filterCriteria.toLowerCase())) ||
+  filterCriteria.length <= MINIMUM_SEARCH_LENGTH;
 
-const BlogIndex = ({ data, location }) => {
+type Props = {
+  location: Location;
+  data: {
+    site: {
+      siteMetadata: {
+        title: string;
+        description: string;
+      };
+    };
+    allMarkdownRemark: {
+      edges: {
+        node: {
+          fields: {
+            slug: string;
+            langKey: string;
+          };
+          timeToRead: number;
+          excerpt: string;
+          frontmatter: {
+            date: string;
+            title: string;
+            description: string;
+            thumbnail: {
+              childImageSharp: {
+                fixed: string;
+              };
+            };
+            tags: string[];
+          };
+        };
+      }[];
+    };
+    tagsGroup: {
+      group: { fieldValue: string }[];
+    };
+  };
+};
+
+const BlogIndex = ({ data, location }: Props) => {
   const { title } = data.site.siteMetadata;
   const tags = data.tagsGroup.group.map((g) => g.fieldValue);
 
-  const [selectedTags, setSelectedTags] = useState([]);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [filter, setFilter] = useState('');
 
-  const handleOnTagClick = (tag) => {
+  const handleOnTagClick = (tag: string) => {
     if (selectedTags.includes(tag)) {
       setSelectedTags(selectedTags.filter((s) => s !== tag));
       return;
@@ -61,7 +99,7 @@ const BlogIndex = ({ data, location }) => {
 export default BlogIndex;
 
 export const pageQuery = graphql`
-  query($langKey: String!) {
+  query ($langKey: String!) {
     site {
       siteMetadata {
         title

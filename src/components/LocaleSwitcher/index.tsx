@@ -4,7 +4,13 @@ import { Link } from 'gatsby';
 import { supportedLanguages } from '../../../i18n';
 import { colors } from '../../constants/styles';
 
-const LocaleSwitcher = ({ currentLocale, locales, slug }) => {
+type Props = {
+  slug: string;
+  currentLocale: string;
+  locales: string[];
+};
+
+const LocaleSwitcher = ({ currentLocale, locales, slug }: Props) => {
   if (!locales.length) {
     return null;
   }
@@ -14,7 +20,7 @@ const LocaleSwitcher = ({ currentLocale, locales, slug }) => {
     .map((lang, index, mLocales) => (
       <Fragment key={lang}>
         <Link style={{ color: colors.orange }} to={`/${lang}/${slug}`}>
-          {supportedLanguages[lang]}
+          {(supportedLanguages as Record<string, string>)[lang]}
         </Link>
         {index < mLocales.length - 1 && ' | '}
       </Fragment>
@@ -31,7 +37,7 @@ const LocaleSwitcher = ({ currentLocale, locales, slug }) => {
     );
   }
 
-  return links;
+  return <div>{links}</div>;
 };
 
 LocaleSwitcher.propTypes = {

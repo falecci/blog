@@ -4,7 +4,13 @@ import { Link } from 'gatsby';
 import { scale } from '../../utils/typography';
 import { colors } from '../../constants/styles';
 
-const Header = ({ location, title }) => {
+type Props = {
+  title: string;
+  location: Location;
+}
+
+const Header = ({ location, title }: Props) => {
+  // @ts-expect-error
   const rootPath = `${__PATH_PREFIX__}/`;
 
   const titleLink = (

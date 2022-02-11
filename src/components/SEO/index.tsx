@@ -3,7 +3,19 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-const SEO = ({ description, lang, meta, title, thumbnail }) => {
+type Props = {
+  description?: string;
+  meta: any[];
+  lang: string;
+  title: string;
+  thumbnail?: {
+    childImageSharp: {
+      fixed: string;
+    };
+  };
+};
+
+const SEO = ({ description, lang, meta, title, thumbnail }: Props) => {
   const { site } = useStaticQuery(
     graphql`
       query {

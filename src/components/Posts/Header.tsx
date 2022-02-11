@@ -3,7 +3,14 @@ import { Link } from 'gatsby';
 import { rhythm } from '../../utils/typography';
 import { colors } from '../../constants/styles';
 
-const Header = ({ slug, title, date, timeToRead }) => (
+type Props = {
+  slug: string;
+  title: string;
+  date: string;
+  timeToRead: number;
+};
+
+const Header = ({ slug, title, date, timeToRead }: Props) => (
   <header>
     <h2
       style={{

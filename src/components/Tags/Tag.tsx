@@ -11,13 +11,17 @@ const styles = {
   fontWeight: 600,
   marginRight: '1rem',
   padding: '4px 16px',
-  userSelect: 'none',
 };
 
-const Tag = ({ tag, onClick }) => {
+type Props = {
+  tag: string;
+  onClick: (tag: string) => void;
+};
+
+const Tag = ({ tag, onClick }: Props) => {
   const [selected, setSelected] = useState(false);
 
-  const handleOnTagClick = (tag) => {
+  const handleOnTagClick = (tag: string) => {
     setSelected(!selected);
     onClick(tag);
   };

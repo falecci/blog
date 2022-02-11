@@ -1,7 +1,12 @@
 import React from 'react';
 import Tag from './Tag';
 
-const Tags = ({ tags, onTagClick }) => (
+type Props = {
+  tags: string[];
+  onTagClick: (tag: string) => void;
+};
+
+const Tags = ({ tags, onTagClick }: Props) => (
   <ul
     style={{
       listStyleType: 'none',
