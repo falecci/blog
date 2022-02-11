@@ -22,7 +22,7 @@ const SEO = ({ description, lang, meta, title, thumbnail }) => {
   );
 
   const metaDescription = description || site.siteMetadata.description;
-  const imageSrc = thumbnail && thumbnail.childImageSharp.sizes.src;
+  const imageSrc = thumbnail && thumbnail.childImageSharp.fixed;
   let origin = site.siteMetadata.siteUrl;
   if (typeof window !== 'undefined') {
     origin = window.location.origin;
