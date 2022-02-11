@@ -35,12 +35,28 @@ const Bio = () => {
 
   const { author, social } = data.site.siteMetadata;
 
-  const socialURLs = {
-    Twitter: `https://mobile.twitter.com/${social.twitter}`,
-    Github: `https://github.com/${social.github}`,
-    Email: `mailto:${social.email}`,
-    LinkedIn: `https://linkedin.com/in/${social.linkedIn}`,
-  };
+  const socialURLs = [
+    {
+      href: `https://github.com/${social.github}`,
+      Icon: GithubIcon,
+      title: 'Github',
+    },
+    {
+      href: `https://linkedin.com/in/${social.linkedIn}`,
+      Icon: LinkedInIcon,
+      title: 'LinkedIn',
+    },
+    {
+      href: `https://mobile.twitter.com/${social.twitter}`,
+      Icon: TwitterIcon,
+      title: 'Twitter',
+    },
+    {
+      href: `mailto:${social.email}`,
+      Icon: EmailIcon,
+      title: 'Email',
+    },
+  ];
 
   return (
     <>
@@ -75,29 +91,11 @@ const Bio = () => {
         </p>
 
         <div className="social-icons-container">
-          <a
-            title="Twitter"
-            className="social-anchor"
-            href={socialURLs.Twitter}
-          >
-            <TwitterIcon className="social-icon" />
-          </a>
-
-          <a
-            title="LinkedIn"
-            className="social-anchor"
-            href={socialURLs.LinkedIn}
-          >
-            <LinkedInIcon className="social-icon" />
-          </a>
-
-          <a title="Github" className="social-anchor" href={socialURLs.Github}>
-            <GithubIcon className="social-icon" />
-          </a>
-
-          <a title="Email" className="social-anchor" href={socialURLs.Email}>
-            <EmailIcon className="social-icon" />
-          </a>
+          {socialURLs.map(({ title, href, Icon }) => (
+            <a className="social-anchor" title={title} href={href}>
+              <Icon className="social-icon" />
+            </a>
+          ))}
         </div>
       </div>
       <div className="vertical-divider" />
